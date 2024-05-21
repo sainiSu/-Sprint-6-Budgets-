@@ -1,8 +1,9 @@
 const WebData =({pages,languages,setPages,setLanguages}) => {
   return (
-    <div className="flex flex-col gap-2 mt-4">
-              <div className="flex items-center justify-between">
-                <label htmlFor="pages" className="font-semibold text-xl">&#128992;Nombre de pàgines</label>
+    <>
+                <div className="flex items-center justify-between">
+
+    <span className="font-semibold md:me-10 text-center md:text-start"> &#128992;Nombre de pàgines</span>
                 <input
                     type="number"
                     id="pages"
@@ -11,9 +12,10 @@ const WebData =({pages,languages,setPages,setLanguages}) => {
                     min="1"
                     className="w-16 text-center border rounded"
                 />
-            </div>
+                </div>
+                <br />
             <div className="flex items-center justify-between">
-                <label htmlFor="pages" className="font-semibold text-xl">&#128992;Nombre de llenguatges</label>
+            <span className="font-semibold md:me-10 text-center md:text-start"> &#128992;Nombre de llenguatges</span>
                 <input
                     type="number"
                     id="pages"
@@ -23,7 +25,7 @@ const WebData =({pages,languages,setPages,setLanguages}) => {
                     className="w-16 text-center border rounded"
                 />
             </div>
-    </div>
+    </>
   )
 }
 export default WebData;

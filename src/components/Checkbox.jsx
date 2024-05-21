@@ -60,6 +60,7 @@ const Checkbox = () => {
                         />
                         <span className="font-semibold text-xl">Afegir</span>
                     </label>
+                    <br/>
                     {service.title.toLowerCase() === "web" && options.web &&(
                         <WebsiteData pages = {pages}  languages={languages} setPages={setPages} setLanguages ={setLanguages}/>
                     )}
