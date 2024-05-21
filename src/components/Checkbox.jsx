@@ -2,6 +2,8 @@ import  { useState } from "react";
 import services from "../data/ServiceData";
 import Header from "./Header";
 import TotalPrice from "./TotalPrice";
+import WebsiteData from "../data/WebData";
+
 
 const Checkbox = () => {
     const [options, setOptions] = useState({
@@ -9,6 +11,9 @@ const Checkbox = () => {
         ads: false,
         web: false
     });
+    const [pages , setPages] = useState(1);
+    const [languages , setLanguages] = useState(1);
+
 
     const handleChange = (option) => {
         setOptions(prevOptions => ({
@@ -18,9 +23,13 @@ const Checkbox = () => {
     };
 
     const calculateTotal = () => {
-        return services.reduce((total, service) => {
-            return options[service.title] ? total + service.price : total;
+        let total = services.reduce((total, service) => {
+            return options[service.title.toLowerCase()] ? total + service.price : total;
         }, 0);
+        if(options.web){
+            total+= (pages + languages)*30
+        }
+        return total;
     };
 
     const total = calculateTotal();
@@ -33,7 +42,7 @@ const Checkbox = () => {
                     <div className="flex items-center flex-col md:flex-row md:text-start text-center">
                         <div className="md:w-2/5 flex flex-col justify-center items-center md:items-start">
                             <h2 className="font-bold text-4xl md:mt-3 mt-5 md:text-start text-center">
-                                {service.title}
+                                {service.title.toLowerCase()}
                             </h2>
                             <p className="my-5 md:my-0 font-semibold text-xl">
                                 {service.description}
@@ -43,14 +52,17 @@ const Checkbox = () => {
                     </div>
                     <label className="label cursor-pointer justify-end gap-2">
                         <input
-                            className="checkbox border-emerald-500 [--chkbg:theme(colors.emerald.500)]"
+                            className="checkbox border-emerald-700 [--chkbg:theme(colors.emerald.700)]"
                             type="checkbox"
-                            id={service.title}
-                            checked={options[service.title]}
-                            onChange={() => handleChange(service.title)}
+                            id={service.title.toLowerCase()}
+                            checked={options[service.title.toLowerCase()]}
+                            onChange={() => handleChange(service.title.toLowerCase())}
                         />
                         <span className="font-semibold text-xl">Afegir</span>
                     </label>
+                    {service.title.toLowerCase() === "web" && options.web &&(
+                        <WebsiteData pages = {pages}  languages={languages} setPages={setPages} setLanguages ={setLanguages}/>
+                    )}
                 </div>
             ))}
             <footer className="flex justify-between font-bold mt-6">
