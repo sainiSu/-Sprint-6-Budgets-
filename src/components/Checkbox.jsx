@@ -21,6 +21,25 @@ const Checkbox = () => {
             [option]: !prevOptions[option]
         }));
     };
+    const handleIncrement = (field) => {
+        if (field === 'pages') {
+          setPages(pages + 1);
+        } else if (field === 'languages') {
+          setLanguages(languages + 1);
+        }
+      };
+    
+      const handleDecrement = (field) => {
+        if (field === 'pages') {
+          if(pages > 1){
+            setPages(pages - 1)
+          }
+        } else if (field === 'languages') {
+          if(languages > 1){
+            setLanguages(languages - 1)
+          }
+        }
+      };
 
     const calculateTotal = () => {
         let total = services.reduce((total, service) => {
@@ -62,7 +81,7 @@ const Checkbox = () => {
                     </label>
                     <br/>
                     {service.title.toLowerCase() === "web" && options.web &&(
-                        <WebsiteData pages = {pages}  languages={languages} setPages={setPages} setLanguages ={setLanguages}/>
+                        <WebsiteData pages = {pages}  languages={languages} setPages={setPages} setLanguages ={setLanguages} handleDecrement={handleDecrement}  handleIncrement={handleIncrement}/>
                     )}
                 </div>
             ))}
