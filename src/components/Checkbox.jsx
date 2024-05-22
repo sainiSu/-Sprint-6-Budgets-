@@ -21,7 +21,7 @@ const Checkbox = () => {
             [option]: !prevOptions[option]
         }));
     };
-    const handleIncrement = (field) => {
+    const handleIncrement = (field ) => {
         if (field === 'pages') {
           setPages(pages + 1);
         } else if (field === 'languages') {
