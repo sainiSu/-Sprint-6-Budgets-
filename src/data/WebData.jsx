@@ -15,8 +15,8 @@ const WebData = ({ pages, languages, setPages, setLanguages ,handleDecrement ,ha
           <input 
             id="pages"
             value={pages}
-            onChange={(e) => setPages(parseInt(e.target.value))}
-            min="1"  //website page never equals to 0 so i put min value 
+            onChange={(e) => setPages(isNaN(parseInt(e.target.value)) ? 1 : parseInt(e.target.value))}
+          min="1"  //website page never equals to 0 so i put min value 
             className="mx-1 btn btn-dark btn-xs btn-circle btn-outline"
           />
           <button 
@@ -40,7 +40,8 @@ const WebData = ({ pages, languages, setPages, setLanguages ,handleDecrement ,ha
           <input 
             id="languages"
             value={languages}
-            onChange={(e) => setLanguages(parseInt(e.target.value))}
+            onChange={(e) => setPages(isNaN(parseInt(e.target.value)) ? 1 : parseInt(e.target.value))}
+          min="1"
             className="mx-1 btn btn-dark btn-xs btn-circle btn-outline"
           />
           <button
