@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center text-wrap font-semibold p-20 m-28">
 
       <img src=".\src\components\welcome.png" alt="Welcome" className="max-w-xs h-auto my-4 mx-auto welcome-image animate-bounce" />
 
