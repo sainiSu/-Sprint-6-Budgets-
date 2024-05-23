@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Switch, Routes, Route } from 'react-router-dom'
 import Checkbox from './components/Checkbox'
 import { Home } from './components/Home'
 
@@ -7,12 +7,12 @@ import { Home } from './components/Home'
 
     return (
       
-      <Router>
+      <Switch>
         <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/calculator' element={<Checkbox/>}/>
         </Routes>
-      </Router>
+      </Switch>
     )
   }
   
