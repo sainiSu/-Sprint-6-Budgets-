@@ -17,14 +17,26 @@ const Checkbox = () => {
     const [pages, setPages] = useState(1);
     const [languages, setLanguages] = useState(1);
     const [budgets, setBudgets] = useState([]);
+    const [webPopUp ,setWebPopUp] = useState(false);
 
 
     const handleChange = (option) => {
-        setOptions(prevOptions => ({
+        setOptions(prevOptions => {
+            const newOption = {
             ...prevOptions,
             [option]: !prevOptions[option]
-        }));
+            }
+
+            //for popup
+
+
+            if(option === 'web' && !prevOptions.web){
+                setWebPopUp(true);
+            }
+            return newOption;
+        });
     };
+
     const handleIncrement = (field) => {
         if (field === 'pages') {
             setPages(pages + 1);
@@ -116,6 +128,28 @@ const Checkbox = () => {
 
           <BudgetForm addBudget={addBudget}/>
           <BudgetList budgets={budgets}/>
+
+          {webPopUp && (
+
+            <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center">
+
+                <div className="bg-white font-serif border rounded p-4 w-1/3">
+
+                    <h2 className="text-lg font-bold text-center mb-2">Número de Paginas y llenguatges</h2>
+                    <br />
+
+                    <p>Afegeix les llenguatges que tindrà el teu projecte. El cost de cada llenguatge és de 30€.</p>
+
+                    <br/>
+
+                    <button className="bg-gray-100 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 border border-gray-400 rounded shadow" onClick={() => setWebPopUp(false)} >Close</button>
+
+                </div>
+
+
+
+            </div>
+          )}
 
         </div>
     );
