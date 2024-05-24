@@ -36,9 +36,7 @@ const BudgetForm = ({ addBudget }) => {
   return (
     <div className="mx-auto md:w-5/6 shadow-xl md:p-10 p-3 rounded-3xl mt-8 mb-16">
 
-      <h3 className="font-bold text-4xl md:mt-3 mt-5 mb-5 md:text-start text-center">
-        Demanar pressupost
-      </h3>
+      <h3 className="font-bold text-4xl md:mt-3 mt-5 mb-5 md:text-start text-center"> Demanar pressupost</h3>
 
       <form className="flex md:flex-row flex-col items-center my-5 gap-1 relative" onSubmit={handleSubmit}>
 
