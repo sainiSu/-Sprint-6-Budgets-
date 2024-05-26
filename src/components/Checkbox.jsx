@@ -17,7 +17,7 @@ const Checkbox = () => {
     const [pages, setPages] = useState(0);
     const [languages, setLanguages] = useState(0);
     const [budgets, setBudgets] = useState([]);
-    const [webPopUp ,setWebPopUp] = useState(false);
+    const [webPopUp , setWebPopUp] = useState(false);
 
 
     const handleChange = (option) => {
@@ -59,6 +59,7 @@ const Checkbox = () => {
         let total = services.reduce((total, service) => {
             return options[service.title.toLowerCase()] ? total + service.price : total;
         }, 0);
+        
         if (options.web) {
             total += (pages + languages) * 30
         }
@@ -70,8 +71,10 @@ const Checkbox = () => {
     const addBudget = (budgetDetails) => {
       const newBudget = {
         ...budgetDetails,
-        services: [],
-        total: 0,
+        services: Object.keys(options).filter(option => options[option]),
+        total: total,
+        date:new Date().toString(),
+        id: budgets.length + 1,
       };
       setBudgets((prevBudgets) => [...prevBudgets, newBudget]);
     };
