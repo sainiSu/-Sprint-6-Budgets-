@@ -1,4 +1,4 @@
-const WebData = ({ pages, languages, setPages, setLanguages ,handleDecrement ,handleIncrement }) => {
+const WebData = ({ pages, languages, handleDecrement ,handleIncrement }) => {
   
   return (
     <>
@@ -15,8 +15,6 @@ const WebData = ({ pages, languages, setPages, setLanguages ,handleDecrement ,ha
           <input
             id="pages"
             value={pages}
-            onChange={(e) =>  setPages(isNaN(parseInt(e.target.value)) ? 1 : parseInt(e.target.value))}
-            min="1"  //website page never equals to 0 so i put min value 
             className="w-16 text-center border  border-slate-900 rounded"
           />
 
@@ -41,8 +39,6 @@ const WebData = ({ pages, languages, setPages, setLanguages ,handleDecrement ,ha
           <input 
             id="languages"
             value={languages}
-            onChange={(e) =>  setLanguages(isNaN(parseInt(e.target.value)) ? 1 : parseInt(e.target.value))}
-            min="1"
             className="w-16 text-center border border-slate-900 rounded"
           />
 
