@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import services from "../data/ServiceData";
 import Header from "./Header";
 import TotalPrice from "./TotalPrice";
 import WebsiteData from "../data/WebData";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import BudgetForm from './BudgetForm';
 import BudgetList from './BudgetList';
-
 
 const Checkbox = () => {
     const [options, setOptions] = useState({
@@ -14,19 +15,48 @@ const Checkbox = () => {
         ads: false,
         web: false
     });
+
     const [pages, setPages] = useState(0);
     const [languages, setLanguages] = useState(0);
     const [budgets, setBudgets] = useState([]);
     const [webPopUp, setWebPopUp] = useState(false);
     const [isAnnual, setIsAnnual] = useState(false);
 
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        //Parse URL parameters
+
+        const params = new URLSearchParams(location.search);
+        setOptions({
+            seo: params.get('CampaingSeo') === 'true',
+            ads: params.get('CampaingAds') === 'true',
+            web: params.get('WebPage') === 'true'
+        });
+
+        setPages(parseInt(params.get('pages')) || 0);
+        setLanguages(parseInt(params.get('lang')) || 0);
+        setIsAnnual(params.get('isAnnual') === 'true');
+    }, [location.search]);
+
+    const updateURLParams = () => {
+        // Update URL based on state changes
+        const params = new URLSearchParams();
+        params.set('CampaingSeo', options.seo);
+        params.set('CampaingAds', options.ads);
+        params.set('WebPage', options.web);
+        params.set('pages', pages);
+        params.set('lang', languages);
+        params.set('isAnnual', isAnnual);
+        navigate({ search: params.toString() });
+    }
     const handleChange = (option) => {
         setOptions(prevOptions => {
             const newOption = {
                 ...prevOptions,
                 [option]: !prevOptions[option]
-            }
+            };
 
             //for popup
 
@@ -37,6 +67,8 @@ const Checkbox = () => {
             return newOption;
         });
     };
+
+    updateURLParams();
 
     const handleIncrement = (field) => {
         if (field === 'pages') {
