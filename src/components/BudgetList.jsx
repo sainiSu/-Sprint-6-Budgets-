@@ -48,7 +48,7 @@ const BudgetList = ({ budgets }) => {
 
         <button className="btn btn-ghost " onClick={handleSortByDate}>Import</button>
 
-        <button className="btn btn-ghost" onClick={handleResetOrder}>Reset</button>
+        <button className="btn btn-ghost" onClick={handleResetOrder}>Data</button>
 
 
       </div>

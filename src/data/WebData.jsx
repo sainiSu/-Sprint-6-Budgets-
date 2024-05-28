@@ -4,7 +4,7 @@ const WebData = ({ pages, languages, handleDecrement ,handleIncrement }) => {
     <>
       <div className="flex items-center justify-between">
 
-        <span className="font-semibold md:me-10 text-center md:text-start">&#128992;Nombre de pàgines </span>
+        <span className="font-semibold md:me-10 text-center md:text-start">&#128992;Número de pàgines </span>
 
         <div className="flex items-center">
 
@@ -28,7 +28,7 @@ const WebData = ({ pages, languages, handleDecrement ,handleIncrement }) => {
 
       <div className="flex items-center justify-between">
 
-        <span className="font-semibold md:me-10 text-center md:text-start">&#128992;Nombre de llenguatges</span>
+        <span className="font-semibold md:me-10 text-center md:text-start">&#128992;Número de llenguatges</span>
 
         <div className="flex items-center">
 

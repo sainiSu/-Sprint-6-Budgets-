@@ -68,8 +68,8 @@ const Checkbox = () => {
 
         //update for discount
 
-        if(isAnnual){
-            total*= 0.8
+        if (isAnnual) {
+            total *= 0.8
         }
 
 
@@ -125,36 +125,41 @@ const Checkbox = () => {
 
             </div>
 
-            {services.map((service) => (
-                <div key={service.id} className="mx-auto md:w-5/6 shadow-xl md:p-10 rounded-3xl my-8 border duration-500">
+            {services.map((service) => {
+                const discountedPrice = isAnnual ? service.price * 0.8 : service.price;
+                return (
+                    <div key={service.id} className="mx-auto md:w-5/6 shadow-xl md:p-10 rounded-3xl my-8 border duration-500">
 
-                    <div className="flex items-center flex-col md:flex-row md:text-start text-center">
-                        <div className="md:w-2/5 flex flex-col justify-center items-center md:items-start">
+                        <div className="flex items-center flex-col md:flex-row md:text-start text-center">
+                            <div className="md:w-2/5 flex flex-col justify-center items-center md:items-start">
 
-                            <h2 className="font-bold text-4xl md:mt-3 mt-5 md:text-start text-center">{service.title.toLowerCase()} </h2>
-                            <p className="my-5 md:my-0 font-semibold text-xl"> {service.description}</p>
+                                <h2 className="font-bold text-4xl md:mt-3 mt-5 md:text-start text-center">{service.title} </h2>
+                                <p className="my-5 md:my-0 font-semibold text-xl"> {service.description}</p>
 
-                        </div>
-                        <span className="translate-x-5 text-4xl font-bold">{service.price} €</span>
+                            </div>
+                            <span className="translate-x-5 text-4xl font-bold">
+                                {discountedPrice} €
+                                {isAnnual && <span className="text-red-500 text-lg"> (Now 20% discount)</span>}
+                            </span>                    </div>
+
+                        <label className="label cursor-pointer justify-end gap-2">
+                            <input
+                                className="checkbox border-emerald-700 [--chkbg:theme(colors.emerald.700)]" type="checkbox" id={service.title.toLowerCase()} onChange={() => handleChange(service.title.toLowerCase())} />
+                            <span className="font-semibold text-xl">Afegir</span>
+                        </label>
+
+                        <br />
+
+                        {service.title.toLowerCase() === "web" && options.web && (
+                            <WebsiteData pages={pages} languages={languages} setPages={setPages} setLanguages={setLanguages} handleDecrement={handleDecrement} handleIncrement={handleIncrement} />
+                        )}
+
                     </div>
-
-                    <label className="label cursor-pointer justify-end gap-2">
-                        <input
-                            className="checkbox border-emerald-700 [--chkbg:theme(colors.emerald.700)]" type="checkbox" id={service.title.toLowerCase()} onChange={() => handleChange(service.title.toLowerCase())} />
-                        <span className="font-semibold text-xl">Afegir</span>
-                    </label>
-
-                    <br />
-
-                    {service.title.toLowerCase() === "web" && options.web && (
-                        <WebsiteData pages={pages} languages={languages} setPages={setPages} setLanguages={setLanguages} handleDecrement={handleDecrement} handleIncrement={handleIncrement} />
-                    )}
-
-                </div>
-            ))}
+                );
+            })}
 
             <footer className="flex justify-between font-bold mt-6">
-                <TotalPrice total={total} isAnnual={isAnnual}/>
+                <TotalPrice total={total} isAnnual={isAnnual} />
 
                 <Link to='/'><button className=" font-serif btn btn-outline btn-success">Home</button></Link>
 

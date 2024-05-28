@@ -13,7 +13,7 @@ export const Home = () => {
 
       <h3 className='mb-8 text-xl text-wrap text-neutral-950 font-bold font-serif'>Budget Calculation App</h3>
 
-      <div className='mb-5'>On this web page you can calculate the Budget of different sevices along with discounts also you can pay the amount in the installments (mothly/annually).You can calculte the total of sevices easily.Click the link below and enjoy the sevices.</div>
+      <div className='mb-5'>On this web page you can calculate the Budget of different sevices along with discounts also you can pay the amount in the installments (monthly/annually).You can calculate the total of sevices easily.Click the link below and enjoy the services.</div>
 
       <Link to={'/calculator'} className='btn btn-success  hover:bg-violet-500 active:bg-violet-700 focus:outline font-sans font-bold'>Click Here</Link>
 
