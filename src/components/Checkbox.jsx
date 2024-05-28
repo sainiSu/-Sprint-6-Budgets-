@@ -40,6 +40,22 @@ const Checkbox = () => {
         setIsAnnual(params.get('isAnnual') === 'true');
     }, [location.search]);
 
+
+    /*with useEffect hook
+    
+     useEffect(() => {
+        // Update URL based on state changes
+        const params = new URLSearchParams();
+        params.set('CampaingSeo', options.seo);
+        params.set('CampaingAds', options.ads);
+        params.set('WebPage', options.web);
+        params.set('pages', pages);
+        params.set('lang', languages);
+        params.set('isAnnual', isAnnual);
+        navigate({ search: params.toString() });
+    }, [options, pages, languages, isAnnual, navigate]);*/
+
+
     const updateURLParams = () => {
         // Update URL based on state changes
         const params = new URLSearchParams();
@@ -124,6 +140,19 @@ const Checkbox = () => {
     const handleToggleAnnual = () => {
         setIsAnnual(!isAnnual);
     }
+
+    const generateShareableURL = () => {
+        const params = new URLSearchParams();
+        params.set('CampaingSeo', options.seo);
+        params.set('CampaingAds', options.ads);
+        params.set('WebPage', options.web);
+        params.set('pages', pages);
+        params.set('lang', languages);
+        params.set('isAnnual', isAnnual);
+        return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    };
+
+
     return (
         <div className="container mx-auto p-6 relative">
             <br />
@@ -219,6 +248,14 @@ const Checkbox = () => {
 
                 </div>
             )}
+
+            <footer className="flex justify-center font-bold mt-6">
+
+            <button className="font-serif btn btn-outline btn-primary" onClick={() => navigate.clipboard.writeText(generateShareableURL())}>
+                    Share URL
+                </button>
+  
+            </footer>
 
         </div>
     );
