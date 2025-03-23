@@ -3,7 +3,7 @@ const Header = () => {
     
       <div className="relative w-full h-72 bg-cover bg-center rounded-lg overflow-hidden" >
 
-          <img src=".\src\assets\back1.jpg" alt="Header background" className="absolute w-full h-full object-cover" />
+          <img src="/back1.jpg" alt="Header background" className="absolute w-full h-full object-cover" />
 
           <div className="absolute w-full h-full flex justify-center items-center bg-black bg-opacity-5">
             

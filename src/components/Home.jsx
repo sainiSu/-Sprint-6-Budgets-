@@ -9,7 +9,7 @@ export const Home = () => {
 
     <div className="flex flex-col items-center justify-center  bg-gray-100 text-center text-wrap font-semibold p-20 m-28">
 
-      <img src=".\src\components\welcome.png" alt="Welcome" className="max-w-xs h-auto my-4 mx-auto welcome-image animate-bounce" />
+      <img src="/welcome.png" alt="Welcome" className="max-w-xs h-auto my-4 mx-auto welcome-image animate-bounce" />
 
       <h3 className='mb-8 text-xl text-wrap text-neutral-950 font-bold font-serif'>Budget Calculation App</h3>
 
